@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RUGINHOOD ($RIG) — Rug the rich</title>
+<meta name="description" content="RUGINHOOD ($RIG) — the memecoin that rugs the rich. Live on Robinhood Chain.">
+<meta property="og:title" content="RUGINHOOD ($RIG) — Rug the rich">
+<meta property="og:description" content="Trust me Bro. Live on Robinhood Chain.">
+<meta property="og:image" content="./assets/og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RUGINHOOD ($RIG)">
+<meta name="twitter:description" content="Rug the rich. Trust me Bro.">
+<meta name="twitter:image" content="./assets/og.png">
+<link rel="icon" href="./assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#07120a;
+    --bg-2:#0b1a10;
+    --bg-3:#0f2415;
+    --ink:#e8f6ec;
+    --ink-dim:#8fb69a;
+    --line:rgba(0,230,118,.14);
+    --line-strong:rgba(0,230,118,.28);
+    --accent:#00E676;       /* PLACEHOLDER accent — swap HEX */
+    --accent-2:#7CFFB0;
+    --danger:#ff4d5e;
+    --gold:#ffd166;
+    --radius:18px;
+    --radius-sm:10px;
+    --maxw:1200px;
+    --shadow:0 20px 60px -20px rgba(0,230,118,.35);
+    --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;
+    background:
+      radial-gradient(1200px 700px at 50% -10%, rgba(0,230,118,.16), transparent 60%),
+      radial-gradient(900px 500px at 90% 80%, rgba(0,230,118,.08), transparent 60%),
+      var(--grain);
+    mix-blend-mode:screen;opacity:.9;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;cursor:pointer;background:none;border:0}
+  ::selection{background:var(--accent);color:#001a08}
+
+  /* ===== SHELL ===== */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:2}
+  section{padding:110px 0;position:relative;z-index:2}
+  @media (max-width:640px){ section{padding:72px 0} }
+
+  h1,h2,h3{font-family:"Bricolage Grotesque","Space Grotesk",sans-serif;font-weight:800;letter-spacing:-.02em;margin:0 0 .5em;line-height:1.02}
+  h1{font-size:clamp(48px,9vw,120px)}
+  h2{font-size:clamp(32px,5vw,64px)}
+  h3{font-size:clamp(20px,2.4vw,28px);letter-spacing:-.01em}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--accent)}
+  p{color:var(--ink-dim);font-size:17px;max-width:60ch}
+
+  /* ===== HEADER ===== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .25s ease,backdrop-filter .25s ease,border-color .25s ease;
+    border-bottom:1px solid transparent;
+  }
+  .nav.scrolled{
+    background:rgba(7,18,10,.72);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    border-bottom-color:var(--line);
+  }
+  .nav-inner{width:100%;max-width:var(--maxw);display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:-.01em}
+  .brand-mark{
+    width:38px;height:38px;border-radius:12px;
+    background:radial-gradient(circle at 30% 30%,var(--accent-2),var(--accent) 60%,#008f47);
+    display:grid;place-items:center;color:#001a08;font-family:"Bricolage Grotesque";font-weight:800;font-size:20px;
+    box-shadow:0 6px 20px -6px var(--accent);
+  }
+  .brand-name{font-family:"Bricolage Grotesque";font-size:20px}
+  .brand-name b{color:var(--accent)}
+  .nav-links{display:flex;gap:28px}
+  .nav-links a{font-size:14px;color:var(--ink-dim);transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;
+    background:var(--accent);color:#001a08;
+    box-shadow:0 10px 30px -10px var(--accent);
+    transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line-strong);box-shadow:none}
+  .btn.ghost:hover{background:rgba(0,230,118,.06)}
+  .btn svg{width:16px;height:16px}
+  @media (max-width:820px){ .nav-links{display:none} }
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;padding-top:160px;padding-bottom:100px;
+    display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;
+  }
+  @media (max-width:960px){ .hero{grid-template-columns:1fr;padding-top:130px} }
+  .hero h1 span{
+    display:inline-block;background:linear-gradient(180deg,var(--accent-2),var(--accent) 60%,#008f47);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 4px 30px rgba(0,230,118,.25));
+  }
+  .hero-sub{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--ink-dim);letter-spacing:.05em;margin-top:12px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+
+  .hero-visual{
+    position:relative;aspect-ratio:1/1;max-width:520px;justify-self:center;width:100%;
+    border-radius:32px;overflow:hidden;
+    background:radial-gradient(circle at 50% 40%,rgba(0,230,118,.35),transparent 65%),var(--bg-2);
+    border:1px solid var(--line-strong);
+    box-shadow:var(--shadow);
+  }
+  .hero-visual::after{
+    content:"";position:absolute;inset:0;
+    background:conic-gradient(from 220deg at 50% 50%, transparent 0deg, rgba(0,230,118,.14) 90deg, transparent 180deg);
+    animation:spin 22s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+  .hero-visual-fallback{
+    position:absolute;inset:0;display:grid;place-items:center;
+    font-family:"Bricolage Grotesque";font-size:22px;color:var(--ink-dim);text-align:center;padding:20px;z-index:2;
+  }
+
+  /* Contract chip */
+  .contract{
+    margin-top:32px;display:inline-flex;align-items:center;gap:12px;
+    padding:10px 12px 10px 18px;border-radius:999px;
+    background:var(--bg-2);border:1px solid var(--line);
+    font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--ink);
+    max-width:100%;overflow:hidden;
+  }
+  .contract .label{color:var(--ink-dim);text-transform:uppercase;letter-spacing:.14em;font-size:11px}
+  .contract .full{display:none}
+  .contract .short{color:var(--ink)}
+  .copy-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:8px 12px;border-radius:999px;background:rgba(0,230,118,.1);
+    color:var(--accent);font-family:"JetBrains Mono";font-size:12px;font-weight:700;
+    transition:background .15s;
+  }
+  .copy-btn:hover{background:rgba(0,230,118,.18)}
+  .copy-btn svg{width:14px;height:14px}
+  .copy-btn.copied{background:var(--accent);color:#001a08}
+  @media (min-width:900px){ .contract .full{display:inline} .contract .short{display:none} }
+
+  /* ===== TICKER MARQUEE ===== */
+  .marquee{
+    overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:18px 0;background:rgba(11,26,16,.6);
+  }
+  .marquee-track{display:flex;gap:60px;white-space:nowrap;animation:marq 32s linear infinite;font-family:"Bricolage Grotesque";font-size:28px;color:var(--ink-dim)}
+  .marquee-track span{display:inline-flex;align-items:center;gap:60px}
+  .marquee-track b{color:var(--accent)}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== SECTION HEAD ===== */
+  .head{display:flex;flex-direction:column;gap:8px;margin-bottom:56px;max-width:720px}
+  .head p{margin:0}
+
+  /* ===== LORE ===== */
+  .lore-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
+  @media (max-width:900px){ .lore-grid{grid-template-columns:1fr} }
+  .lore-body p{font-size:19px;line-height:1.7;color:#c8ddce}
+  .lore-body p + p{margin-top:1em}
+  .x-card{
+    padding:24px;border-radius:var(--radius);
+    background:linear-gradient(180deg,var(--bg-2),var(--bg-3));
+    border:1px solid var(--line);position:relative;
+  }
+  .x-card .who{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .x-avatar{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%,var(--accent-2),var(--accent) 60%,#004d24);display:grid;place-items:center;color:#001a08;font-weight:800;font-family:"Bricolage Grotesque"}
+  .x-name{font-weight:700}
+  .x-handle{color:var(--ink-dim);font-size:13px;font-family:"JetBrains Mono"}
+  .x-body{font-size:17px;line-height:1.5;color:var(--ink);margin:0 0 18px}
+  .x-card .btn{margin-top:6px}
+
+  /* ===== MARKET ===== */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+  @media (max-width:900px){ .stats{grid-template-columns:repeat(2,1fr)} }
+  .stat{
+    padding:22px;border-radius:var(--radius);background:var(--bg-2);
+    border:1px solid var(--line);position:relative;overflow:hidden;
+    transition:transform .2s ease,border-color .2s ease;
+  }
+  .stat:hover{transform:translateY(-2px);border-color:var(--line-strong)}
+  .stat::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 100px at 0% 0%,rgba(0,230,118,.08),transparent 60%);pointer-events:none}
+  .stat .k{font-family:"JetBrains Mono";font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-dim)}
+  .stat .v{font-family:"Bricolage Grotesque";font-size:clamp(28px,3.4vw,40px);font-weight:800;margin-top:8px;letter-spacing:-.02em}
+  .stat .delta{font-family:"JetBrains Mono";font-size:12px;margin-top:6px;color:var(--ink-dim)}
+  .stat .delta.up{color:var(--accent)}
+  .stat .delta.down{color:var(--danger)}
+  .chart-frame{
+    border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--line);background:var(--bg-2);
+    aspect-ratio:16/9;position:relative;
+  }
+  .chart-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .chart-frame .placeholder{position:absolute;inset:0;display:grid;place-items:center;font-family:"JetBrains Mono";color:var(--ink-dim);font-size:14px;text-align:center;padding:20px}
+  .market-cta{display:flex;justify-content:center;margin-top:24px}
+
+  /* ===== CHAIN ===== */
+  .chain-body{max-width:70ch;margin-bottom:48px}
+  .features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media (max-width:1000px){ .features{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:520px){ .features{grid-template-columns:1fr} }
+  .feature{
+    padding:26px;border-radius:var(--radius);background:var(--bg-2);
+    border:1px solid var(--line);
+    display:flex;flex-direction:column;gap:10px;min-height:200px;
+    transition:transform .2s,border-color .2s;
+  }
+  .feature:hover{transform:translateY(-3px);border-color:var(--line-strong)}
+  .feature .num{font-family:"JetBrains Mono";font-size:11px;letter-spacing:.2em;color:var(--accent)}
+  .feature h3{margin:0}
+  .feature p{font-size:15px;margin:0;color:var(--ink-dim)}
+
+  /* ===== MEMES ===== */
+  .memes{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media (max-width:900px){ .memes{grid-template-columns:repeat(2,1fr)} }
+  .meme{
+    aspect-ratio:1/1;border-radius:var(--radius-sm);overflow:hidden;
+    background:var(--bg-2);border:1px solid var(--line);
+    position:relative;transition:transform .2s;cursor:zoom-in;
+  }
+  .meme:hover{transform:scale(1.02);border-color:var(--line-strong)}
+  .meme img{width:100%;height:100%;object-fit:cover}
+  .meme .tag{position:absolute;left:10px;bottom:10px;font-family:"JetBrains Mono";font-size:10px;letter-spacing:.18em;color:var(--ink);background:rgba(0,0,0,.5);padding:4px 8px;border-radius:6px;backdrop-filter:blur(6px)}
+  .meme .placeholder{position:absolute;inset:0;display:grid;place-items:center;font-family:"Bricolage Grotesque";font-size:48px;color:rgba(0,230,118,.35)}
+
+  /* ===== FOOTER ===== */
+  footer{border-top:1px solid var(--line);padding:60px 0 40px;background:var(--bg-2);position:relative;z-index:2}
+  .foot{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:start}
+  @media (max-width:720px){ .foot{grid-template-columns:1fr} }
+  .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .socials{display:flex;gap:10px}
+  .social{width:42px;height:42px;border-radius:50%;background:var(--bg-3);border:1px solid var(--line);display:grid;place-items:center;transition:background .15s,border-color .15s}
+  .social:hover{background:rgba(0,230,118,.08);border-color:var(--line-strong)}
+  .social svg{width:18px;height:18px;fill:var(--ink)}
+  .disclaimer{margin-top:36px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-dim);font-family:"JetBrains Mono";line-height:1.7;max-width:80ch}
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" aria-label="RUGINHOOD home">
+      <span class="brand-mark">R</span>
+      <span class="brand-name">RUGIN<b>HOOD</b></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#lore">Lore</a>
+      <a href="#market">Market</a>
+      <a href="#chain">Chain</a>
+      <a href="#memes">Memes</a>
+    </nav>
+    <a href="https://www.noxa.fun/" target="_blank" rel="noopener" class="btn">
+      Buy $RIG
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero wrap" id="top">
+  <div>
+    <div class="eyebrow">$RIG · Robinhood Chain</div>
+    <h1>Rug<br>the <span>Rich</span>.</h1>
+    <div class="hero-sub">// Trust me Bro.</div>
+    <div class="hero-cta">
+      <a href="https://www.noxa.fun/" target="_blank" rel="noopener" class="btn">
+        Buy on noxa.fun
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a href="https://x.com/RUGINHOOD_PLACEHOLDER" target="_blank" rel="noopener" class="btn ghost">
+        Follow on X
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21l-6.53 7.46L22 22h-6.828l-4.77-6.24L4.8 22H2.043l6.99-7.98L2 2h6.914l4.31 5.7L18.244 2Zm-2.39 18h1.664L7.24 4H5.454l10.4 16Z"/></svg>
+      </a>
+    </div>
+
+    <div class="contract" data-contract="0xPLACEHOLDER0000000000000000000000000000">
+      <span class="label">CA</span>
+      <span class="full">0xPLACEHOLDER0000000000000000000000000000</span>
+      <span class="short">0xPLAC...0000</span>
+      <button class="copy-btn" aria-label="Copy contract address">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span class="copy-label">COPY</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-visual reveal">
+    <img src="./assets/hero.png" alt="RUGINHOOD hero art" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="hero-visual-fallback" style="display:none">[HERO IMAGE PLACEHOLDER]<br><small style="opacity:.6;font-size:13px;font-family:'JetBrains Mono'">./assets/hero.png</small></div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span><b>$RIG</b> · RUG THE RICH · <b>$RIG</b> · TRUST ME BRO · <b>$RIG</b> · ROBINHOOD CHAIN · <b>$RIG</b> · MEME OR DIE · <b>$RIG</b> · RUG THE RICH · <b>$RIG</b> · TRUST ME BRO · <b>$RIG</b> · ROBINHOOD CHAIN · <b>$RIG</b> · MEME OR DIE · </span>
+  </div>
+</div>
+
+<!-- ============ LORE ============ -->
+<section class="wrap" id="lore">
+  <div class="head reveal">
+    <span class="eyebrow">01 · Origins</span>
+    <h2>The Lore.</h2>
+    <p>Every meme starts with a moment. This one started with a bag, a mask, and a promise: rug the rich, feed the degen.</p>
+  </div>
+
+  <div class="lore-grid">
+    <div class="lore-body reveal">
+      <p>[LORE PARAGRAPH 1 — Racconto delle origini del token. Chi lo ha lanciato, quando, perché. Massimo 3-4 righe.]</p>
+      <p>[LORE PARAGRAPH 2 — Il momento X su Twitter/X che ha fatto esplodere il meme. Un aneddoto specifico, un tweet virale, un evento della community.]</p>
+      <p>[LORE PARAGRAPH 3 — Dove sta andando. Chiusura potente, chiamata all'azione emotiva.]</p>
+    </div>
+
+    <div class="x-card reveal">
+      <div class="who">
+        <div class="x-avatar">R</div>
+        <div>
+          <div class="x-name">RUGINHOOD</div>
+          <div class="x-handle">@RUGINHOOD_PLACEHOLDER</div>
+        </div>
+      </div>
+      <p class="x-body">[FEATURED X POST — Sostituire con testo del tweet di riferimento che ha lanciato la lore.]</p>
+      <a href="https://x.com/RUGINHOOD_PLACEHOLDER/status/PLACEHOLDER" target="_blank" rel="noopener" class="btn">
+        View post on X
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARKET ============ -->
+<section class="wrap" id="market">
+  <div class="head reveal">
+    <span class="eyebrow">02 · Live data</span>
+    <h2>The Market.</h2>
+    <p>Live price, market cap, and volume. Straight from DexScreener.</p>
+  </div>
+
+  <div class="stats reveal">
+    <div class="stat"><div class="k">Price</div><div class="v" id="stat-price">--</div><div class="delta" id="stat-price-src">USD</div></div>
+    <div class="stat"><div class="k">Market Cap</div><div class="v" id="stat-mcap">--</div><div class="delta">Fully diluted</div></div>
+    <div class="stat"><div class="k">24h Volume</div><div class="v" id="stat-vol">--</div><div class="delta">USD</div></div>
+    <div class="stat"><div class="k">24h Change</div><div class="v" id="stat-change">--</div><div class="delta" id="stat-change-label">vs. yesterday</div></div>
+  </div>
+
+  <div class="chart-frame reveal" id="chart-frame">
+    <div class="placeholder">[DEXSCREENER CHART PLACEHOLDER]<br><small style="opacity:.6">Add pair address to enable iframe embed</small></div>
+  </div>
+
+  <div class="market-cta reveal">
+    <a href="#" id="dex-link" target="_blank" rel="noopener" class="btn ghost">
+      Open on DexScreener
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M9 7h8v8"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ CHAIN ============ -->
+<section class="wrap" id="chain">
+  <div class="head reveal">
+    <span class="eyebrow">03 · Infrastructure</span>
+    <h2>The Chain.</h2>
+    <p class="chain-body">[CHAIN DESCRIPTION — 3-5 righe sulla Robinhood Chain: quando è nata, che tipo di rete è (L1, L2, sidechain), la sua tesi, il suo ethos. Un paragrafo denso, non promozionale.]</p>
+  </div>
+
+  <div class="features reveal">
+    <div class="feature">
+      <div class="num">/ 01</div>
+      <h3>[FEATURE 1 TITLE]</h3>
+      <p>[Una riga di descrizione — es. Layer 2 rollup con settlement su Ethereum, fees basse, TPS alto.]</p>
+    </div>
+    <div class="feature">
+      <div class="num">/ 02</div>
+      <h3>[FEATURE 2 TITLE]</h3>
+      <p>[Una riga di descrizione.]</p>
+    </div>
+    <div class="feature">
+      <div class="num">/ 03</div>
+      <h3>[FEATURE 3 TITLE]</h3>
+      <p>[Una riga di descrizione.]</p>
+    </div>
+    <div class="feature">
+      <div class="num">/ 04</div>
+      <h3>[FEATURE 4 TITLE]</h3>
+      <p>[Una riga di descrizione.]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEMES ============ -->
+<section class="wrap" id="memes">
+  <div class="head reveal">
+    <span class="eyebrow">04 · Culture</span>
+    <h2>Memes.</h2>
+    <p>The gospel of $RIG, told in JPEGs.</p>
+  </div>
+
+  <div class="memes reveal">
+    <div class="meme"><div class="placeholder">01</div><span class="tag">MEME 001</span></div>
+    <div class="meme"><div class="placeholder">02</div><span class="tag">MEME 002</span></div>
+    <div class="meme"><div class="placeholder">03</div><span class="tag">MEME 003</span></div>
+    <div class="meme"><div class="placeholder">04</div><span class="tag">MEME 004</span></div>
+    <div class="meme"><div class="placeholder">05</div><span class="tag">MEME 005</span></div>
+    <div class="meme"><div class="placeholder">06</div><span class="tag">MEME 006</span></div>
+    <div class="meme"><div class="placeholder">07</div><span class="tag">MEME 007</span></div>
+    <div class="meme"><div class="placeholder">08</div><span class="tag">MEME 008</span></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="foot-brand">
+          <span class="brand-mark">R</span>
+          <span class="brand-name">RUGIN<b>HOOD</b></span>
+        </div>
+        <p style="max-width:52ch;font-size:15px">Rug the rich. Trust me Bro. Live on Robinhood Chain.</p>
+
+        <div class="contract" style="margin-top:20px" data-contract="0xPLACEHOLDER0000000000000000000000000000">
+          <span class="label">CA</span>
+          <span class="full">0xPLACEHOLDER0000000000000000000000000000</span>
+          <span class="short">0xPLAC...0000</span>
+          <button class="copy-btn" aria-label="Copy contract address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="copy-label">COPY</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="socials" aria-label="Social links">
+        <a class="social" href="https://x.com/RUGINHOOD_PLACEHOLDER" target="_blank" rel="noopener" aria-label="X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2H21l-6.53 7.46L22 22h-6.828l-4.77-6.24L4.8 22H2.043l6.99-7.98L2 2h6.914l4.31 5.7L18.244 2Zm-2.39 18h1.664L7.24 4H5.454l10.4 16Z"/></svg>
+        </a>
+        <a class="social" href="https://dexscreener.com/" target="_blank" rel="noopener" aria-label="DexScreener">
+          <svg viewBox="0 0 24 24"><path d="M3 20h4V10H3v10Zm7 0h4V4h-4v16Zm7-8v8h4v-8h-4Z"/></svg>
+        </a>
+        <a class="social" href="https://www.noxa.fun/" target="_blank" rel="noopener" aria-label="noxa.fun">
+          <svg viewBox="0 0 24 24"><path d="M12 2 2 22h20L12 2Zm0 5.3L18.5 20h-13L12 7.3Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      $RIG is a memecoin with no intrinsic value or expectation of financial return.
+      Not affiliated with Robinhood Markets, Inc. or any related entity.
+      Do your own research. Nothing here is financial advice.
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ============ CONFIG ============ */
+const CONFIG = {
+  contract: "0xPLACEHOLDER0000000000000000000000000000",   // TODO: real CA
+  chain:    "PLACEHOLDER_CHAIN_SLUG",                       // e.g. "ethereum","base","solana"
+  pair:     "0xPAIRADDRESSPLACEHOLDER00000000000000000000", // DexScreener pair address
+  dexUrl:   "https://dexscreener.com/PLACEHOLDER_CHAIN_SLUG/0xPAIRADDRESSPLACEHOLDER00000000000000000000",
+  refreshMs: 30000,
+};
+
+/* ============ HEADER SCROLL STATE ============ */
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+window.addEventListener('scroll', onScroll, { passive:true });
+onScroll();
+
+/* ============ COPY TO CLIPBOARD ============ */
+document.querySelectorAll('.contract').forEach(el => {
+  const btn = el.querySelector('.copy-btn');
+  const label = btn.querySelector('.copy-label');
+  const ca = el.dataset.contract;
+  btn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(ca);
+      const prev = label.textContent;
+      label.textContent = 'COPIED';
+      btn.classList.add('copied');
+      setTimeout(() => { label.textContent = prev; btn.classList.remove('copied'); }, 1500);
+    } catch(e){ console.warn('clipboard failed', e); }
+  });
+});
+
+/* ============ SCROLL REVEAL ============ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{ threshold:.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ============ DEXSCREENER LIVE STATS ============ */
+const fmtUSD = (n) => {
+  if (n == null || isNaN(n)) return '--';
+  if (n >= 1e9) return '$' + (n/1e9).toFixed(2) + 'B';
+  if (n >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+  if (n >= 1e3) return '$' + (n/1e3).toFixed(2) + 'K';
+  if (n >= 1)   return '$' + n.toFixed(2);
+  return '$' + n.toPrecision(3);
+};
+const fmtPct = (n) => (n == null || isNaN(n)) ? '--' : (n>=0?'+':'') + n.toFixed(2) + '%';
+
+async function loadMarket(){
+  // Guard against placeholder values
+  if (CONFIG.pair.includes('PLACEHOLDER')) return;
+  try {
+    const r = await fetch(`https://api.dexscreener.com/latest/dex/pairs/${CONFIG.chain}/${CONFIG.pair}`);
+    const j = await r.json();
+    const p = j?.pair || j?.pairs?.[0];
+    if (!p) return;
+    document.getElementById('stat-price').textContent  = fmtUSD(parseFloat(p.priceUsd));
+    document.getElementById('stat-mcap').textContent   = fmtUSD(p.fdv ?? p.marketCap);
+    document.getElementById('stat-vol').textContent    = fmtUSD(p.volume?.h24);
+    const ch = p.priceChange?.h24;
+    const chEl = document.getElementById('stat-change');
+    chEl.textContent = fmtPct(ch);
+    const delta = chEl.parentElement.querySelector('.delta');
+    delta.classList.remove('up','down');
+    if (ch != null) delta.classList.add(ch >= 0 ? 'up' : 'down');
+  } catch(e){ console.warn('DexScreener fetch failed', e); }
+}
+
+/* ============ CHART IFRAME ============ */
+function mountChart(){
+  if (CONFIG.pair.includes('PLACEHOLDER')) return;
+  const frame = document.getElementById('chart-frame');
+  frame.innerHTML = '';
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://dexscreener.com/${CONFIG.chain}/${CONFIG.pair}?embed=1&theme=dark&trades=0&info=0`;
+  iframe.loading = 'lazy';
+  iframe.allow = 'clipboard-write';
+  frame.appendChild(iframe);
+}
+
+/* ============ DEX BUTTON ============ */
+document.getElementById('dex-link').href = CONFIG.dexUrl;
+
+/* ============ INIT ============ */
+mountChart();
+loadMarket();
+setInterval(loadMarket, CONFIG.refreshMs);
+</script>
+</body>
+</html>
